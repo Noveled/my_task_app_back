@@ -4,19 +4,7 @@ const PORT = '8080';
 
 const app = express(); // express 모듈을 사용하기 위해 app 변수에 할당
 
-// const corsOptions = {
-//   origin: 'http://localhost:3000', // 허용할 주소
-//   credentials: true, // 인증 정보 허용
-// };
-
-// const corsOption2 = ['http://localhost:3000', 'http://localhost:3001'];
-
-//ad
 app.use(cors()); // http, https 프로토콜을 사용하는 서버 간의 통신을 허용한다.
-// app.use(cors({
-//   origin: 'http://localhost:3000', 
-//   credentials: true, 
-// })); // http, https 프로토콜을 사용하는 서버 간의 통신을 허용한다.
 
 app.use(express.json()); // express 모듈의 json() 메소드 사용
 
@@ -24,15 +12,6 @@ app.get('/', (req, res) => {
   res.send('hello World. backend deploy complete wow!');
 });
 
-// app.get('/get_tasks', async (req, res) => {
-//   try {
-//     console.log(database);
-//     const result = await database.query('SELECT * FROM TASK');
-//     return res.status(200).json(result.rows);
-//   } catch (error) {
-//     return res.status(500).json({ error: error.message });
-//   }
-// })
 
 app.use(require('./routes/getRoutes'));
 app.use(require('./routes/postRoutes'));
